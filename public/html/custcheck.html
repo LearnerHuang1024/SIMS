@@ -1,0 +1,115 @@
+<style>
+.search{overflow:hidden;margin:0;padding:0;}
+.fl{ width:40%;float:left;margin-top:40px;}
+.fr{width:20%;float:left;margin-top:-52px;margin-left:35%;}
+/* .box{width:100%;height:100%;position:absolute;left:0;top:0;background-color:#fff;display:none;} */
+/* form {
+        left: 100px;
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        margin-left: -250px;
+    } */
+
+</style>
+  <div class="search">
+    <div class="layui-form-item fl" >
+        <label class="layui-form-label">客户查询</label>
+        <div class="layui-input-block">
+            <input type="text"  placeholder="请输入ID"  class="layui-input" id="searval">
+        </div>
+    </div>
+    <div class="layui-form-item fr">
+        <div class="layui-input-block">
+            <button class="layui-btn" type="button" id="btn1" >查询</button>
+        </div>
+    </div>
+  </div>
+<table lay-filter="demo">
+  <thead>
+    <tr >
+      <th lay-data="{field:'customerId', width:80}">ID</th>
+      <th lay-data="{field:'profile', width:150}">客户简介</th>
+      <th lay-data="{field:'tel'}">联系电话</th>
+      <th lay-data="{field:'email', width:150}">邮箱</th>
+      <th lay-data="{field:'userid', width:100}">负责人编号</th>
+      <th lay-data="{field:'state'}">是否流失</th>
+      <th lay-data="{field:'cause'}">流失原因</th>
+      <th lay-data="{fixed: 'right',width: 140, align:'center', toolbar: '#barDemo'}"></th>
+    </tr> 
+  </thead>
+  <tbody id="tbody">
+   <!-- <tr >
+    <td>贤心1</td>
+    <td>66</td>
+    <td>人生就像是一场修行a</td>
+    <td>贤心1</td>
+    <td>66</td>
+    <td>人生就像是一场修行a</td>
+    <td>人生就像是一场修行a</td>
+     </tr>  -->
+  </tbody>
+</table>
+<!-- <div class="box">
+<form class="layui-form " method="post">
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label ">客户编号</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请输入"  class="layui-input" id="custormerid">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">联系电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" placeholder="请输入" class="layui-input" id="tel">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="email" placeholder="请输入" class="layui-input" id="email">
+        </div>
+    </div>
+     <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">客户简介</label>
+    <div class="layui-input-block" >
+      <textarea name="profile" placeholder="请输入内容" class="layui-textarea" id="profile"></textarea>
+    </div>
+  </div>
+   <div class="layui-form-item">
+    <label class="layui-form-label">负责人编号</label>
+    <div class="layui-input-block">
+      <select name="userid"  id="userid">
+        <option value=""></option>
+        <option value="1">1</option>
+      </select>
+    </div>
+  </div>
+    <div class="layui-form-item">
+    <label class="layui-form-label">是否流失</label>
+    <div class="layui-input-block">
+      <input type="radio" name="state" value="是" title="是" id="yes">
+      <input type="radio" name="state" value="否" title="否" checked id="no">
+    </div>
+  </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">流失原因</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea" name="cause" id="cause"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn btn" type="button">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</div> -->
+<script src="../lib/jquery.js"></script>
+<script src="../js/custcheck.js"> </script>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>

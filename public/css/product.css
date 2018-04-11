@@ -1,0 +1,11 @@
+form{overflow:hidden;margin:15px;}
+form .layui-form-item{width:45%; clear:none;float:left;}
+form fieldset{border:1px solid #C9C9C9;}
+form .clear{clear:both;}
+.pic{position:relative;}
+.productpic{width:200px;height:200px;position:absolute;top:35px;left:110px;z-index:50;display:none;}
+.productpic img{width:200px;height:200px;}
+#search{overflow:hidden;}
+#search .fl{ width:40%;float:left;}
+#search .layui-form-item{clear:none;}
+#search .fr{width:20%;float:left;margin-top:-52px;margin-left:35%;}

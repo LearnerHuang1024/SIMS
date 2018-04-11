@@ -1,0 +1,87 @@
+<style>
+    form {
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        margin-left: -250px;
+    }
+</style>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input type="text" name="names" id="names" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">电话</label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" id="tel" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="phone">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="text" name="email" id="email" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="email">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份</label>
+        <div class="layui-input-block">
+            <input type="radio" name="identify" class="identify" value="sm" title="销售" lay-filter="*">
+            <input type="radio" name="identify" class="identify" value="mg" title="经理" lay-filter="*">
+            <input type="radio" name="identify" class="identify" value="ep" title="总监" lay-filter="*">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">初始密码</label>
+        <div class="layui-input-block">
+            <input type="text" name="pass" id="pass" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" id="btn" lay-submit lay-filter="*">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script src="../lib/layui/layui.all.js"></script>
+<script src="../lib/jquery.js"></script>
+<script>
+    $("#btn").on("click", function() {
+        var stop = true;
+        $("input").each(function(i, e) {
+            if ($(this).val() == "") {
+                stop = false;
+            }
+        })
+        if (!stop) {
+            alert("请输入完整信息")
+        } else {
+            var a = $('input:radio:checked').val()
+            $.ajax({
+                url: "http://10.40.153.145:8888/user/addInfo",
+                type: "POST",
+                data: {
+                    accound: a + $("#tel").val(),
+                    password: $("#pass").val(),
+                    tel: $("#tel").val(),
+                    email: $("#email").val(),
+                    identify: a
+                },
+                success: function(data) {
+                    console.log(data)
+                }
+            })
+        }
+    });
+    layui.use('form', function() {
+        var form = layui.form;
+        form.on('submit(*)', function(data) {
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+        //各种基于事件的操作，下面会有进一步介绍
+    });
+</script>;

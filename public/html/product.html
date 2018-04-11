@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="../css/product.css" media="all">
+<form class="layui-form ">
+    <fieldset >
+       <legend>添加商品</legend>
+        <div class="layui-form-item ">
+        <label class="layui-form-label ">商品ID</label>
+        <div class="layui-input-block">
+            <input type="text" placeholder="请输入"  class="layui-input" >
+        </div>
+    </div>
+    <div class="layui-form-item ">
+        <label class="layui-form-label">商品名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="tel" placeholder="请输入" class="layui-input" id="name">
+        </div>
+    </div>
+    <div class="layui-form-item ">
+        <label class="layui-form-label">商品价格</label>
+        <div class="layui-input-block">
+            <input type="text" name="email" placeholder="请输入" class="layui-input" id="price">
+        </div>
+    </div>
+     <div class="layui-form-item pic">
+        <label class="layui-form-label">商品图片</label>
+         <div class="layui-input-block upload">
+           <input type="file" id="img" name="myfile">
+           <button class="layui-btn " type="button" id="look">预览</button>
+         </div>
+          <div class="productpic">
+           <img src="../img/list21.jpg" id="myimg" >
+          </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+        <label class="layui-form-label">商品介绍</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea" name="notic" id="notic"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item clear">
+        <div class="layui-input-block">
+            <button class="layui-btn btn" type="button">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+   </fieldset>
+</form>
+<div id="search" >
+    <div class="layui-form-item fl" >
+        <label class="layui-form-label">商品查询</label>
+        <div class="layui-input-block">
+            <input type="text"  placeholder="请输入ID"  class="layui-input" id="product">
+        </div>
+    </div>
+    <div class="layui-form-item fl">
+        <div class="layui-input-block">
+            <button class="layui-btn" type="button" id="btn2" >查询</button>
+        </div>
+    </div>
+  </div>
+<<<<<<< HEAD
+<table lay-filter="demo">
+=======
+<table lay-filter="demo" >
+>>>>>>> d1ca6b97584c4fb0166fb947d7eb930f048e6471
+  <thead>
+    <tr >
+      <th lay-data="{field:'productId', width:80}">ID</th>
+      <th lay-data="{field:'name',width:120}">商品名称</th>
+      <th lay-data="{field:'price', width:100}">商品价格</th>
+      <th lay-data="{field:'img' ,width:150} ">图片地址</th>
+      <th lay-data="{field:'notic'}">商品介绍</th>
+      <th lay-data="{fixed: 'right',width: 140, align:'center', toolbar: '#barDemo'}"></th>
+    </tr> 
+  </thead>
+  <tbody id="tbody">
+   <!-- <tr >
+    <td>贤心1</td>
+    <td>66</td>
+    <td>人生就像是一场修行a</td>
+    <td>贤心1</td>
+    <td>66</td>
+    <td>人生就像是一场修行a</td>
+    <td>人生就像是一场修行a</td>
+     </tr>  -->
+  </tbody>
+</table>
+<script src="../lib/layui/layui.all.js"></script> 
+<script src="../lib/jquery.js"></script>
+<script src="../js/product.js"> </script>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>

@@ -1,0 +1,98 @@
+<div class="box">
+	<div class="top">
+		<h3>NOTICE</h3>
+	</div>
+	<div class="query">
+		<span>公告查询</span>
+		<input type="text" placeholder="user" id = "user" />
+		<input type="button" value="确定"  id = "btn"/>
+	</div>
+	<div class="bottom">
+		<ul id = 'tbody' class = "tbody">
+			<!--<li>
+				<em>1</em>
+				<span><a href="##" class = "click">福特让他扔掉非官方的股份的非官方梵蒂冈</a></span>
+				<strong>2018-01-04</strong>				
+			</li><hr>-->
+		</ul>
+		
+	</div>
+</div>
+<meta charset="utf-8">
+<style>
+.box{
+	width: 80%;
+	margin: 0 auto;
+}
+	.box .top{
+		width: 100%;
+	    height: 60px;
+	}
+	.box .bottom{
+		margin-top: 20px;
+	}
+	.box .top h3{
+		width: 200px;
+	    font-size: 18px;
+	    height: 60px;
+	    line-height: 60px;
+		margin:0 auto;
+	}
+	.box  .query{
+		background:#f1f9fe;
+		height:40px;	
+    	margin: 0 auto;
+	}
+	.box .query span{
+		    display: inline-block;
+		    height: 40px;
+		    font-size: 18px;
+		    line-height: 40px;
+		    margin-left: 20px;
+	}
+	.box .query input{
+		    height: 20px;
+		    margin-left: 20px;
+		    font-size: 18px;
+		    padding-left: 10px;
+		    width: 150px;
+	}
+	.box .query #btn{
+		font-size: 18px;
+		line-height: 26px;
+		height: 26px;
+		text-align:center;
+		width: 80px;
+		background: #009688;
+		color:white;
+	}
+	.box .bottom ul{
+		width: 100%;
+		font-size:18px;
+	}
+	.box .bottom ul li em{
+		font-style: normal;
+		width: 30px;
+	    height: 30px;
+	    display: inline-block;
+	    text-align: center;
+	    line-height: 30px;
+	}
+	.box .bottom ul li span{
+		width: 500px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.box .bottom strong{
+		font-weight: 400;
+		margin-left: 20px;
+		font-size: 16px;
+	    float: right;
+	}
+	#tbody span:hover a{
+		color:deepskyblue;
+		text-decoration: underline;
+	}
+</style>
+<script src="../js/not.js"></script>

@@ -1,0 +1,116 @@
+<div class="form">
+<!--<div class="box">
+	<div class="top">
+		<h3>几十块和风刀霜剑发挥的</h3>
+		<h4>发布时间：2018-01-05</h4>
+	</div>
+	<div class="content">
+		少丢很舒服能思考东方红弄丢了康师傅肯定是高科技的火锅店开奖号孤岛惊魂光电科技好感度空间很感动开奖号该地块贾湖骨笛地方喝的萨克讲话发到空间划分空间的划分的空间汇顶科技
+	</div>	
+</div>-->
+</div>
+<meta charset="utf-8">
+<style>
+	.box{<div class="form">
+<!--<div class="box">
+	<div class="top">
+		<h3><em class="id"></em>几十块和风刀霜剑发挥的</h3>
+		<h4>发布时间：2018-01-05</h4>
+	</div>
+	<div class="content">
+		少丢很舒服能思考东方红弄丢了康师傅肯定是高科技的火锅店开奖号孤岛惊魂光电科技好感度空间很感动开奖号该地块贾湖骨笛地方喝的萨克讲话发到空间划分空间的划分的空间汇顶科技
+	</div>	
+</div>-->
+</div>
+<meta charset="utf-8">
+<style>
+	.box{
+		width:80%;
+		margin: 20px auto;
+		font-size: 18px;
+		height: 100%;
+		border: 1px solid #cccccc;
+		}
+	.box .top{
+		text-align:center;
+		margin-top:20px;
+	}
+	.box .top h3{
+		margin: 0 auto;
+		font-size: 20px;
+		line-height:40px;
+		color: #57a6d6;
+		
+	}
+	.box .top h4{
+		font-weight: 500;
+		font-size: 16px;
+	}
+	.box .content{
+	width: 80%;
+    font-size: 18px;
+    text-indent: 2em;
+    line-height: 80px;
+    margin: 0 auto;
+	}
+</style>
+<script src="../lib/jquery.js"></script>
+<script>
+$(function(){
+	var num = Number($(".form").attr("data-id"));
+	var str = '';
+	$.ajax({
+		url:'http://10.40.153.145:8888/notic/getNoticById',
+		type:'post',
+		data:{
+			id:num
+		},
+		success:function(data){	
+			str='<div class="box"><div class="top"><h3 class="form"><em class="id"></em>'+data.title+'</h3><h4>发布时间：'+data.time+'</h4></div><div class="content">'+data.content+'</div></div>';
+			$(".form").html(str);
+		}
+	})
+	})
+
+</script>
+
+		width:80%;
+		margin: 20px auto;
+		font-size: 18px;
+		height: 100%;
+		border: 1px solid #cccccc;
+		}
+	.box .top{
+		text-align:center;
+		margin-top:20px;
+	}
+	.box .top h3{
+		margin: 0 auto;
+		font-size: 20px;
+		line-height:40px;
+		color: #57a6d6;
+		
+	}
+	.box .top h4{
+		font-weight: 500;
+	}
+	.box .content{
+	width: 80%;
+    font-size: 18px;
+    text-indent: 2em;
+    line-height: 50px;
+    margin: 0 auto;
+	}
+</style>
+<script src="../lib/jquery.js"></script>
+<script>
+	$(function(data){
+		
+		var str = '';
+		for( var i =0;i<data.length;i++){
+			console.log(data.length)
+			str+='<div class="box"><div class="top"><h3>'+data[i].title+'</h3><h4>发布时间：'+data[i].time+'</h4></div><div class="content">'+data[i].content+'</div></div>'
+		}
+		$(".form").html(str);
+	})
+</script>

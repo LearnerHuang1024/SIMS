@@ -1,0 +1,5 @@
+body,html,ul,li,p,form,input,ol{margin:0;padding:0;}
+body{color:#666;}
+.addmsg>span{line-height:38px;display:block;margin:15px 0 0 15px;float:left;}
+.addmsg>span>i{float:left;font-style:normal;}
+.addmsg>span>input{width:180px;margin-left:10px;float:left;}

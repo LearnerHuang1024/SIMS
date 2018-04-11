@@ -1,0 +1,72 @@
+<style>
+    form {
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 200px;
+        margin-left: -250px;
+    }
+</style>
+
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">员工编号</label>
+        <div class="layui-input-block">
+            <input type="text" name="names" id="names" placeholder="请输入员工编号" autocomplete="off" class="layui-input" class="panding">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="title" id="title" placeholder="请输入" autocomplete="off" class="layui-input" class="panding">
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">请填写公告</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" id="content" class="layui-textarea" class="panding"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" id="btn" lay-submit lay-filter="*">立即发布</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+<script src="../lib/jquery.js"></script>
+<script src="../lib/layui/layui.all.js"></script>
+<script>
+    $("#btn").on("click", function() {
+        var stop = true;
+        $("input").each(function(i, e) {
+            if ($(this).val() == "") {
+                stop = false;
+            }
+        })
+        if (!stop) {
+            alert("请输入完整信息")
+        } else {
+            $.ajax({
+                url: "http://10.40.153.145:8888/notic/addNotic",
+                type: "post",
+                data: {
+                    userid: $("#names").val(),
+                    content: $("#content").val(),
+                    title: $("#title").val()
+                },
+                success: function(data) {
+                    alert("发布成功")
+                }
+            })
+        }
+
+    })
+    layui.use('form', function() {
+        var form = layui.form;
+        form.on('submit(*)', function(data) {
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+        //各种基于事件的操作，下面会有进一步介绍
+    });
+</script>

@@ -1,0 +1,193 @@
+<style>
+    form {
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        margin-left: -250px;
+    }
+    
+    .product {
+        width: 33%;
+        display: inline-block;
+    }
+</style>
+<form class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">接手人</label>
+        <div class="layui-input-block">
+            <input type="text" name="names" placeholder="请输入" autocomplete="off" class="layui-input" id="names" disabled>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">客户名</label>
+        <div class="layui-input-block">
+            <input type="text" name="" placeholder="请输入" autocomplete="off" class="layui-input" id="customerid">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">商品信息</label>
+        <div class="layui-input-block">
+            <input type="text" name="" id="productid" placeholder="商品编号" autocomplete="off" class="layui-input pro">
+            <input type="text" name="" id="num" placeholder="商品数量" autocomplete="off" class="layui-input pro">
+            <input type="text" name="" id="price" placeholder="商品价格" autocomplete="off" class="layui-input pro" disabled>
+            <button class="layui-btn" lay-submit lay-filter="*" id="btn">添加</button>
+        </div>
+    </div>
+    <table id="demo" lay-filter="test"></table>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="*" id="btn2">提交订单</button>
+        </div>
+    </div>
+    <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+</form>
+<script src="../lib/layui/layui.all.js"></script>
+<script src="../lib/jquery.js"></script>
+<script>
+    $("#productid").blur(function() {
+        $.ajax({
+            url: "http://10.40.153.145:8888/product/getProductById",
+            type: "post",
+            data: {
+                productid: $("#productid").val()
+            },
+            success: function(data) {
+                $("#price").val(data.price)
+                $("#num").val(1)
+            },
+            error: function() {
+                alert("请输入正确商品编号")
+            }
+        })
+    })
+    $("#num").blur(function() {
+        $("#price").val($("#price").val() * $("#num").val())
+    })
+    $("#names").val($(".username").html())
+    $(".pro").css({
+        "display": "inline-block",
+        "width": "25%",
+    })
+    $("#btn").css({
+        "width": "20%"
+    })
+    var branch = []
+    $("#btn").on("click", function() {
+        var bstop = true;
+        $(".pro").each(function(i, e) {
+            if ($(this).val() == "") {
+                bstop = false;
+            }
+        })
+        if (!bstop) {
+            alert("请输入正确商品信息")
+        } else {
+            if (branch.length == 0) {
+                var obj = {
+                    productid: $("#productid").val(),
+                    num: $("#num").val(),
+                    price: $("#price").val()
+                }
+                branch.push(obj)
+            } else {
+                var index = -1;
+                $.each(branch, function(i, e) {
+                    if (branch[i].productid == $("#productid").val()) {
+                        index = i;
+                    }
+                })
+                if (index === -1) {
+                    obj = {
+                        productid: $("#productid").val(),
+                        num: $("#num").val(),
+                        price: $("#price").val()
+                    }
+                    branch.push(obj)
+                } else {
+                    branch[index].num = Number(branch[index].num) + Number($("#num").val());
+                    branch[index].price = Number(branch[index].price) + Number($("#price").val())
+                }
+
+            }
+            $(".pro").val("")
+        }
+        layui.use('table', function() {
+            var table = layui.table;
+            table.render({
+                elem: '#demo',
+                page: false,
+                data: branch,
+                cols: [
+                    [ //表头
+                        {
+                            field: 'productid',
+                            title: '商品编号',
+                            width: '25%'
+                        }, {
+                            field: 'num',
+                            title: '商品数量',
+                            width: '25%'
+                        }, {
+                            field: 'price',
+                            title: '商品价格',
+                            width: '25%'
+                        }, {
+                            title: '操作',
+                            width: '25%',
+                            align: 'center',
+                            toolbar: '#barDemo'
+                        }
+                    ]
+                ]
+            });
+            table.on('tool(test)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+                if (layEvent === 'del') {
+                    var index = -1;
+                    $.each(branch, function(i) {
+                        if (data.productid == branch[i].productid) {
+                            index = i;
+                        }
+                    })
+                    if (index != -1) {
+                        branch.splice(index, 1)
+                    }
+                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                }
+            });
+        });
+    })
+    $("#btn2").click(function() {
+        if (branch.length == 0 || $("#customerid").val() == "") {
+            alert("请输入完整信息")
+        } else {
+            $.ajax({
+                url: "http://10.40.153.145:8888/oder/addorder",
+                type: "post",
+                data: {
+                    branch: branch,
+                    customerid: $("#customerid").val(),
+                    userid: $("#names").val()
+                },
+                success: function(data) {
+                    alert("提交成功")
+                    $(".layui-body ").load("orderinput.html")
+                }
+            })
+        }
+    })
+    layui.use('form', function() {
+        var form = layui.form;
+        form.on('submit(*)', function(data) {
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+        //各种基于事件的操作，下面会有进一步介绍
+    });
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-danger layui-btn-xs del" lay-event="del" id="del">删除</a>
+</script>

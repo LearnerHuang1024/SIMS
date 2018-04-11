@@ -1,0 +1,115 @@
+<style>
+   form{overflow:hidden;margin:10px 40px;}
+  form .layui-form-item{width:45%;}
+  form fieldset{border:1px solid #C9C9C9;padding:20px 40px;}
+  form .clear{clear:both;}
+  form label{color:red;}
+  #textaer{width:600px;}
+  form .time .test1{float:left;width:110px;}
+  .text{float:left;padding:0 20px;line-height:35px;font-style:normal;}
+</style>
+<form class="layui-form">
+    <fieldset >
+       <legend>请假申请</legend>
+    <div class="layui-form-item">
+<<<<<<< HEAD
+      <label class="layui-form-label">请假类型</label>
+      <div class="layui-input-block">
+        <select name="city" lay-verify="required">
+          <option value=""></option>
+          <option value="0">事假</option>
+          <option value="1">病假</option>
+          <option value="2">婚假</option>
+          <option value="3">产假</option>
+          <option value="4">其他</option>
+        </select>
+      </div>
+    </div>
+    <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+      <input type="text" class="layui-input" id="test1">
+    </div>
+    <div class="layui-inline"> <!-- 注意：这一层元素并不是必须的 -->
+      <input type="text" class="layui-input" id="test1">
+    </div>
+    <div class="layui-form-item layui-form-text">
+      <label class="layui-form-label">原因</label>
+      <div class="layui-input-block">
+        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+=======
+      <label class="layui-form-label">账号</label>
+      <div class="layui-input-block">
+        <input type="text" class="layui-input" disabled value="12233" id="acount">
+      </div>
+    </div>
+    <div class="layui-form-item ">
+    <label class="layui-form-label">请假类型</label>
+    <div class="layui-input-block">
+      <select  id="type">
+        <option ></option>
+        <option value="事假">事假</option>
+        <option value="病假">病假</option>
+        <option value="婚假">婚假</option>
+      </select>
+    </div>
+  </div>
+    <div class="layui-form-item ">
+      <label class="layui-form-label">请假事由</label>
+      <div class="layui-input-block">
+        <textarea  placeholder="请输入内容" class="layui-textarea" id="textaer"></textarea>
+      </div>
+    </div>
+    <div class="layui-form-item ">
+      <label class="layui-form-label">请假时间</label>
+       <div class="layui-inline time"> <!-- 注意：这一层元素并不是必须的 -->
+       <input type="text" class="layui-input test1" id="time1" >
+        <em class="text">到</em>
+        <input type="text" class="layui-input test1" id="time2">
+>>>>>>> d1ca6b97584c4fb0166fb947d7eb930f048e6471
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn btn" type="button">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </fieldset >
+  </form>
+  <table lay-filter="demo" >
+  <thead>
+    <tr >
+      <th lay-data="{field:'salesmanid', width:80}">账号</th>
+      <th lay-data="{field:'type',width:120}">请假类型</th>
+      <th lay-data="{field:'cause',width:120}">请假事由</th>
+      <th lay-data="{field:'throught', width:100}">领导审批</th>
+      <th lay-data="{field:'startTime' ,width:150} ">开始时间</th>
+      <th lay-data="{field:'endTime' ,width:150} ">结束时间</th>
+      <th lay-data="{field:'currTime'}">创建时间</th>
+    </tr> 
+  </thead>
+  <tbody id="tbody">
+   <!-- <tr >
+    <td>贤心1</td>
+    <td>66</td>
+    <td>人生就像是一场修行a</td>
+    <td>贤心1</td>
+    <td>66</td>
+    <td>人生就像是一场修行a</td>
+    <td>人生就像是一场修行a</td>
+     </tr>  -->
+  </tbody>
+</table>
+<script src="../lib/layui/layui.all.js"></script> 
+<script src="../lib/jquery.js"></script>
+<script src="../lib/jquery.cookie.js "></script>
+<script src="../js/newDayoff.js"> </script>
+<script>
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  
+  //执行一个laydate实例
+  laydate.render({
+    elem: '.test1' //指定元素
+  });
+});
+</script>

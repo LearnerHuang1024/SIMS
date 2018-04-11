@@ -1,0 +1,151 @@
+<div class="box">
+	<div class="top">
+		<h3>NOTICE</h3>
+	</div>
+	<div class="query">
+		<span>公告查询</span>
+		<input type="text" placeholder="user" id = "user" />
+		<input type="button" value="确定"  id = "btn"/>
+	</div>
+	<link rel="stylesheet" href="../lib/layui/css/layui.css" media="all">     
+	
+
+	<div class="bottom">
+		<ul id = "biuuu_city_list">
+			<!--<li>
+				<em>1</em>
+				<span><a href="##" class = "click">福特让他扔掉非官方的股份的非官方梵蒂冈</a></span>
+				<strong>2018-01-04</strong>				
+			</li><hr>-->
+			
+		</ul>			
+	</div>
+</div>
+<ul ></ul> 
+<div id="demo20"></div>
+
+<style>
+#demo1{
+	height:100px;
+	}
+.box{
+	width: 80%;
+	margin: 0 auto;
+}
+	.box .top{
+		width: 100%;
+	    height: 60px;
+	}
+	.box .bottom{
+		margin-top: 20px;
+	}
+	.box .top h3{
+		width: 200px;
+	    font-size: 18px;
+	    height: 60px;
+	    line-height: 60px;
+		margin:0 auto;
+	}
+	.box  .query{
+		background:#f1f9fe;
+		height:40px;	
+    	margin: 0 auto;
+	}
+	.box .query span{
+		    display: inline-block;
+		    height: 40px;
+		    font-size: 18px;
+		    line-height: 40px;
+		    margin-left: 20px;
+	}
+	.box .query input{
+		    height: 20px;
+		    margin-left: 20px;
+		    font-size: 18px;
+		    padding-left: 10px;
+		    width: 150px;
+	}
+	.box .query #btn{
+		font-size: 18px;
+		line-height: 26px;
+		height: 26px;
+		text-align:center;
+		width: 80px;
+		background: #009688;
+		color:white;
+	}
+	.box .bottom ul{
+		width: 100%;
+		font-size:18px;
+	}
+	.box .bottom ul li em{
+		font-style: normal;
+		width: 30px;
+	    height: 30px;
+	    display: inline-block;
+	    text-align: center;
+	    line-height: 30px;
+	}
+	.box .bottom ul li span{
+		width: 500px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.box .bottom strong{
+		font-weight: 400;
+		margin-left: 20px;
+		font-size:16px;
+		float: right;
+	}
+</style>
+<script src="../lib/layui/layui.all.js" charset="utf-8"></script>
+<script src="../js/hisnotice.js"></script>
+<script>
+layui.use(['laypage', 'layer'], function(){
+  var laypage = layui.laypage
+  ,layer = layui.layer;
+var str = '';
+	$.ajax({
+		url:'http://10.40.153.145:8888/notic/getAllNotic',
+		type:'post',
+		success:function(data){
+		
+//调用分页
+  laypage.render({
+    elem: 'demo20'
+    ,count: data.length
+    ,jump: function(obj){
+      //模拟渲染
+      document.getElementById('biuuu_city_list').innerHTML = function(){
+        var arr = []
+        ,thisData = data.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+        layui.each(thisData, function(index, item){
+          arr.push('<li>'+ item +'</li>');
+        });
+        return arr.join('');
+      }();
+    }
+  });
+		
+			for(var i= 0;i<data.length;i++)
+			{
+					// var str1=data[i].id+data[i].title+data[i].time;
+					// console.log(obj2);
+					// obj2={"id","titile"}
+				str+='<li><em>'+data[i].id+'</em><span><a href="##" class = "click">'+data[i].title+'</a></span><strong>'+data[i].time+'</strong></li><hr>';
+			}
+			$("#tbody").html(str);		
+			$("#tbody").on("click",".click",function(){
+		var html = "notcontent.html";
+		console.log($(this).parent().prev().html());
+		var num = $(this).parent().prev().html()
+		$(".layui-body").load(html,function(){
+			$(".form").attr("data-id",num);
+		});
+		})
+		}
+	})
+ 
+});
+</script>

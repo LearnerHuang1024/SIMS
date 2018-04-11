@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>主页</title>
+    <!-- <link rel="stylesheet" href="css/layui.css " media="all"> -->
+    <link rel="stylesheet" href="../lib/layui/css/layui.css" media="all">
+    <style>
+        .demo-carousel {
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">销售管理系统</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item">
+                    <a href="">控制台</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="">商品管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="">用户</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="">邮件管理</a>
+                        </dd>
+                        <dd>
+                            <a href="">消息管理</a>
+                        </dd>
+                        <dd>
+                            <a href="">授权管理</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img"> 用户名
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="">基本资料</a>
+                        </dd>
+                        <dd>
+                            <a href="">安全设置</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="">注销</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item ">
+                        <!-- 管理员有发布公告的权限 -->
+                        <a class="" href="javascript:;">系统公告</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;">最新公告</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">历史公告</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-html="writeNotice.html" class="chick">发布公告</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">草稿箱</a>
+                            </dd>
+
+                        </dl>
+                    </li>
+                    <!-- 员工信息增删改 -->
+                    <li class="layui-nav-item ">
+                        <a href="javascript:;">员工管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" data-html="newemployee.html" class="chick">新增员工</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" data-html="emplyeechange.html" class="chick">修改信息</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <!-- <li class="layui-nav-item ">
+                        <a href="javascript:;">订单录入</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;">订单录入</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">订单查询</a>
+                            </dd>
+
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item ">
+                        <a href="javascript:;">客户信息</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;">客户新增</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">客户查找</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item ">
+                        <a href="javascript:;">业务员考勤</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;">请假</a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;">违纪</a>
+                            </dd>
+                        </dl>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body">
+            <table lay-filter="demo">
+                <thead>
+                    <tr>
+                        <th lay-data="{field:'username', width:100}">昵称</th>
+                        <th lay-data="{field:'experience', width:80, sort:true}">积分</th>
+                        <th lay-data="{field:'sign'}">签名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>贤心1</td>
+                        <td>66</td>
+                        <td>人生就像是一场修行a</td>
+                    </tr>
+                    <tr>
+                        <td>贤心2</td>
+                        <td>88</td>
+                        <td>人生就像是一场修行b</td>
+                    </tr>
+                    <tr>
+                        <td>贤心3</td>
+                        <td>33</td>
+                        <td>人生就像是一场修行c</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+
+        </div>
+
+
+    </div>
+</body>
+
+</html>
+<script src="../lib/layui/layui.all.js"></script>
+<script src="../lib/jquery.js"></script>
+<script>
+    $(".chick").each(function(i, e) {
+        $(e).click(function() {
+            var html = $(e).attr("data-html");
+            $(".layui-body").load(html)
+        })
+    })
+</script>
